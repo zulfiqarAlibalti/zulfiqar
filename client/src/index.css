@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  /* Add a subtle pattern to light mode */
+  .light-bg-pattern {
+    background-color: #ffffff;
+    background-image: radial-gradient(#f0f4f9 2px, transparent 2px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+  }
+  
+  /* Add a subtle pattern to dark mode */
+  .dark-bg-pattern {
+    background-color: #0f172a;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 2px, transparent 2px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+  }
+  
+  /* Glowing accent for dark mode */
+  .dark-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .dark-glow::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(79, 70, 229, 0.08) 0%,
+      transparent 40%
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* Animated gradient background for hero section */
+  .animated-gradient {
+    background: linear-gradient(
+      -45deg,
+      rgba(235, 244, 255, 0.5) 0%,
+      rgba(235, 247, 255, 0.2) 25%,
+      rgba(230, 251, 255, 0.5) 50%,
+      rgba(236, 245, 255, 0.2) 75%,
+      rgba(234, 247, 255, 0.5) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  .dark .animated-gradient {
+    background: linear-gradient(
+      -45deg,
+      rgba(17, 24, 39, 0.9) 0%,
+      rgba(12, 19, 35, 0.7) 25%,
+      rgba(17, 24, 39, 0.9) 50%,
+      rgba(14, 21, 37, 0.7) 75%,
+      rgba(17, 24, 39, 0.9) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
